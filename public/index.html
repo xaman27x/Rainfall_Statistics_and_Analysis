@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      background-image: url("img.jpg");
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #de1212;
+      padding: 20px;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      animation: fadeIn 2s ease-out;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 40px;
+    }
+
+    #data {
+      padding: 20px;
+      animation: slideIn 2.5s ease-out;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    label {
+      margin-right: 10px;
+      color: white;
+    }
+
+    input {
+      padding: 10px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      border-radius: 5px;
+      background-color: #de1212;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    #note {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #b09c9b;
+      color: #333;
+      font-size: 14px;
+      text-align: center;
+    }
+    #corner-line {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 5px;
+      color: white;
+      font-size: 12px;
+      z-index: 9999;
+    }
+    .additional-parameters {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .additional-parameters label,
+    .additional-parameters input {
+      margin-bottom: 10px;
+      color: #d90b0b;
+    }
+
+    #newsearch {
+      text-align: center;
+      color: orange;
+      background-color: #de1212;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #predictedRainfall {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #cf0e22;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      animation: fadeIn 3s ease-out;
+    }
+    #github-container {
+      	position: fixed;
+      	top: 10px;
+      	right: 10px;
+      	display: flex;
+      	align-items: center;
+      	color: white;
+      	font-size: 14px;
+      	animation: fadeIn 2s ease-out;
+    	}	
+
+    	#github-icon {
+      	width: 45px;
+      	height: 45px;
+      	border-radius: 50%;
+      	margin-right: 6px;
+    	}
+
+        #github-name {
+         margin-right: 5px;
+         font-size: 20px
+        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        padding-left: 3px;
+      }
+
+      to {
+        opacity: 1;
+        padding-left: 9px;
+      }
+    }
+    .moon {
+  	background-color: #73726e;
+  	position: fixed;
+  	bottom: 0;
+  	left: 0;
+  	width: 50px;
+  	height: 50px;
+  	border-radius: 50%;
+  	animation: floatAnimation 4s ease-in-out infinite alternate;
+	}
+
+
+	@keyframes floatAnimation {
+  	0% {
+    	transform: translateY(0);
+  	}
+  	50% {
+  	transform: translateX(20px);
+  	}
+  	100% {
+  	transform: translateX(20px);
+    	transform: translateY(-20px);
+  	}
+	}
+	
+
+  </style>
+</head>
+
+<body>
+<div id="github-container">
+    <img id="github-icon" src="github.png" alt="GitHub Icon">
+    <span id="github-name" style="font-family: 'Arial', sans-serif">xaman27x</span>
+  </div>
+
+  <div id="corner-line">AAR. xaman27x GitHub 2024. Inc</div>
+  
+  <div class="container">
+    <h1 style="color:#7d7670">WEATHER ANALYSIS AND PREDICTION</h1>
+    <div id="data"> Welcome to the algorithmic processing and prediction platform for real-time weather data! Leveraging the "MeteoStat Open Source API," the model fetches precise location data and weather parameters, conducts thorough analysis, and delivers accurate predictions regarding the likelihood of rainfall at any given coordinate across the globe.</div>
+  </div>
+
+  <form id="weatherForm">
+    <label for="latitude">LATITUDE:</label>
+    <input type="text" id="latitude" name="latitude" placeholder="Enter Latitude">
+
+    <label for="longitude">LONGITUDE:</label>
+    <input type="text" id="longitude" name="longitude" placeholder="Enter Longitude">
+
+    <button type="submit" onclick="showAdditionalParameters()">Search</button>
+  </form>
+
+  <div class="additional-parameters" id="additionalParameters">
+    <label for="tavg">AVERAGE TEMPERATURE:</label>
+    <input type="text" id="tavg" style="color:#000000" name="tavg" placeholder="Enter TAVG in Degrees">
+
+    <label for="wdir">WIND DIRECTION:</label>
+    <input type="text" id="wdir" style="color:#000000" name="wdir" placeholder="Enter WDIR in Degrees">
+
+    <label for="wspd">WIND SPEED:</label>
+    <input type="text" id="wspd" style="color:#000000" name="wspd" placeholder="Enter WSPD in km/h">
+
+    <label for="pres">AIR PRESSURE:</label>
+    <input type="text" id="pres" style="color:#000000" name="pres" placeholder="Enter PRES in hPa">
+    <button type="submit" id="newsearch" onclick="boxlist()">Search</button>
+  </div>
+
+  <div id="predictedRainfall"></div>
+  <div id="note">
+    NOTE: The predicted rainfall values might differ with each request as the model has a SYSTEM DESIGNED ALGORITHM and the output is uniquely tailored for each user's inquiry.
+  </div>
+  <div class="moon"></div>
+
+
+  <script>
+    function showAdditionalParameters() {
+      document.getElementById('additionalParameters').style.display = 'flex';
+    }
+
+    document.getElementById('weatherForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitForm();
+    });
+
+    function submitForm() {
+      let latitude = document.getElementById("latitude").value;
+      let longitude = document.getElementById("longitude").value;
+
+      fetch(`/run-python-script?latitude=${latitude}&longitude=${longitude}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+function boxlist() {
+  let tavg = parseFloat(document.getElementById("tavg").value);
+  let wdir = parseFloat(document.getElementById("wdir").value);
+  let wspd = parseFloat(document.getElementById("wspd").value);
+  let pres = parseFloat(document.getElementById("pres").value);
+
+  fetch(`/run-new-script?tavg=${tavg}&wdir=${wdir}&wspd=${wspd}&pres=${pres}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('Predicted Rainfall:', data.predicted_rainfall);
+      let predicted_rainfall_hourly = data.predicted_rainfall / 24;
+      if(predicted_rainfall_hourly < 0) {
+      document.getElementById('predictedRainfall').innerText = `Predicted Rainfall: 0 mm per hour`;
+      document.getElementById('predictedRainfall').style.display = 'block';
+      } else {
+      document.getElementById('predictedRainfall').innerText = `Predicted Rainfall: ${predicted_rainfall_hourly.toFixed(2)} mm per hour`;
+      document.getElementById('predictedRainfall').style.display = 'block';
+      }
+    })
+    
+    .catch(error => {
+      console.error('Error calling run-new-script:', error);
+    });
+
+  fetch(`/run-system-call`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('System call response:', data);
+    })
+    .catch(error => {
+      console.error('Error calling run-system-call:', error);
+    });
+    document.getElementById("note").style.display = "block";
+}
+  </script>
+</body>
+</html>

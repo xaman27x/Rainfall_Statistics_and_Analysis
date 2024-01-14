@@ -1,0 +1,72 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+*.json
+
+# Temporary files
+*.bak
+*.swp
+*~
+
+# Environment files
+.env
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Dependency directories
+public/
+
+# Ignore generated files
+dist/
+*.min.js
+*.min.css
+
+# Ignore GitHub pages settings
+.github/
+
+# Ignore local configuration files
+config.js
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore Mac specific files
+.DS_Store
+
+# Ignore project-specific files
+daily_weather_data_*
+coefficients_*
+
+# Ignore user-specific files
+*.iml
+
+# Ignore system-specific files
+Thumbs.db
+ehthumbs.db
+
+# Ignore custom files
+*.bak
+*.swp
