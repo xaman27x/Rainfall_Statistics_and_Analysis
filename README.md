@@ -11,8 +11,8 @@ The project consists of an HTML/CSS/JS script (`index.html`) that utilizes the `
 ## Installation
 
 1. Clone the repository: https://github.com/xaman27x/Rainfall_Statistics_and_Analysis 
-2. Run the Server Side Script: node server.js                                                            
-3. Open the index.html in your local machine.                                                           
+2. Run the Server Side Script at a given port on your Local Machine: node server.js                                                            
+3. Open the url http;//localhost:{port} in your local machine.                                                           
 
 ## Dependencies
 
