@@ -11,10 +11,13 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      overflow: hidden;
+      overflow: scroll;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
     }
+     ::-webkit-scrollbar {
+        display: none;
+      }
 
     .container {
       text-align: center;
@@ -203,6 +206,14 @@
     <h1 style="color:#7d7670">WEATHER ANALYSIS AND PREDICTION</h1>
     <div id="data"> Welcome to the algorithmic processing and prediction platform for real-time weather data! Leveraging the "MeteoStat Open Source API," the model fetches precise location data and weather parameters, conducts thorough analysis, and delivers accurate predictions regarding the likelihood of rainfall at any given coordinate across the globe.</div>
   </div>
+<div class="predictedRainfall-container">
+      <div id="predictedRainfall"></div>
+      <div id="note">
+      NOTE: The predicted rainfall values might differ with each request as the
+      model has a SYSTEM DESIGNED ALGORITHM and the output is uniquely tailored
+      for each user's inquiry.
+    </div>
+  </div>
 
   <form id="weatherForm">
     <label for="latitude">LATITUDE:</label>
@@ -227,11 +238,6 @@
     <label for="pres">AIR PRESSURE:</label>
     <input type="text" id="pres" style="color:#000000" name="pres" placeholder="Enter PRES in hPa">
     <button type="submit" id="newsearch" onclick="boxlist()">Search</button>
-  </div>
-
-  <div id="predictedRainfall"></div>
-  <div id="note">
-    NOTE: The predicted rainfall values might differ with each request as the model has a SYSTEM DESIGNED ALGORITHM and the output is uniquely tailored for each user's inquiry.
   </div>
   <div class="moon"></div>
 
@@ -294,6 +300,21 @@ function boxlist() {
     });
     document.getElementById("note").style.display = "block";
 }
+function showToast() {
+        var toast = document.createElement('predictedRainfall-container');
+        toast.className = 'toast';
+        var container = document.getElementById('predictedRainfall');
+        container.appendChild(toast);
+        setTimeout(function() {
+            toast.style.opacity = '1';
+        }, 10);
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            setTimeout(function() {
+                container.removeChild(toast);
+            }, 300);
+        }, 3000);
+    }
   </script>
 </body>
 </html>
